@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>comments show list</title>
+</head>
+<body>
+    <form action="">
+        <textarea name="" id="comment" cols="30" rows="10"></textarea>
+        <button id="submit">submit</button>
+    </form>
+    <p id="error"></p>
+    <ul id="comment-list"></ul>
+
+    <!-- Javascript -->
+    <script>
+        const comment = document.getElementById("comment");
+        const submitBtn = document.getElementById('submit');
+        const error = document.getElementById('error');
+        const commentList = document.getElementById('comment-list');
+
+        submitBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            // console.log(comment.value);
+            if(comment.value === '') {
+                error.innerText = 'Please enter something!';
+                error.style.color = 'red';
+            } else {
+                error.innerText = '';
+                error.style.color ='black';
+                const listItem = document.createElement('li');
+                listItem.innerText  = comment.value;
+                commentList.appendChild(listItem);
+                comment.value = '';
+            }
+        });
+    </script>
+</body>
+</html>
